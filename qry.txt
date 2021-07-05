@@ -1,0 +1,202 @@
+{
+  getAuthor(id: "895674d92558a5cff123y") {
+    id
+    firstName
+    lastName
+    age
+    gender
+    isBestSeller
+    hobby
+    books {
+        name
+        price
+        author {
+        firstName
+        books {
+            name
+        }
+        }
+    }
+  }
+  getBook(id: "1") {
+    id
+    name
+    price
+    author {
+        firstName
+        age
+    }
+  }
+  getAllAuthors {
+    id
+    firstName
+    lastName
+    age
+    gender
+    isBestSeller
+    hobby
+    books {
+        name
+        price
+        author {
+        firstName
+        books {
+            name
+        }
+        }
+    }
+  }
+  getAllBooks {
+    id
+    name
+    price
+    author {
+        firstName
+        age
+    }
+  }
+}
+
+==========================================================
+
+{
+  getAuthor(id: "895674d92558a5cff123y") {
+    ...authorFields
+  }
+  getBook(id: "1") {
+    ...bookFields
+  }
+  getAllAuthors {
+    ...authorFields
+  }
+  getAllBooks {
+    ...bookFields
+  }
+}
+
+fragment authorFields on Author {
+  id
+  firstName
+  lastName
+  age
+  gender
+  isBestSeller
+  hobby
+  books {
+    name
+    price
+    author {
+      firstName
+      books {
+        name
+      }
+    }
+  }
+}
+
+fragment bookFields on Book {
+  id
+  name
+  price
+  author {
+    firstName
+    age
+  }
+}
+
+============================================
+
+{
+  qry1: getAllAuthors {
+    id
+    firstName
+    lastName
+  }
+  qry2: getAllAuthors {
+    id
+    firstName
+    lastName
+  }
+}
+
+============================================
+
+mutation {
+  createAuthor(input:{firstName: "Madhu", lastName: "Kor", age:45, gender:Female, email:"mk@mk.com", isBestSeller:true, hobby:["playing", "reading"]}){
+    id
+    firstName
+    lastName
+    age
+    gender
+    email
+    isBestSeller
+    hobby
+  }
+}
+
+mutation {
+  updateAuthor(input:{id:"6r5679cfr558a5cff1d81", firstName: "abc"}){
+    id
+    firstName
+  }
+}
+
+mutation {
+  deleteAuthor(id: "6r5679cfr558a5cff1d81")
+}
+
+
+mutation {
+  createBook(input: {name: "book4", price:234, aid: "6r5679cfr558a5cff1d81"}) {
+    id
+    name
+    price
+    author{
+      id
+      firstName
+      lastName
+    }
+  }
+}
+
+
+mutation {
+  deleteAuthor(id: "8r5674d92558a5cff123y")
+}
+
+==============================================
+mutation delAuthor($id: ID!) {
+  deleteAuthor(id: $id)
+}
+
+{
+  "id": "6r5679cfr558a5cff1d81"
+}
+==============================================
+
+query qry1{
+  getAllAuthors {
+    id
+    firstName
+    lastName
+  }
+}
+
+mutation mut1{
+  updateAuthor(input:{id:"6r5679cfr558a5cff1d81", firstName: "Abc"}){
+    ... on Author {
+      id
+      firstName
+      lastName
+    }
+    ... on Error {
+      id
+      reason
+    }
+  }
+}
+
+============================================
+
+
+GraphQL require enum values to match [_A-Za-z][_0-9A-Za-z] RegExp
