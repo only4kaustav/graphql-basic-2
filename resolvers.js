@@ -1,6 +1,4 @@
 import _ from 'lodash';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
 import { authorTbl, bookTbl } from './schema_data';
 
 class Author {
@@ -31,7 +29,7 @@ class Author {
     }
   }
 
-  updateAuthor() {
+  updateAuthor () {
     if (this.id) {
       const index = _.findIndex(authorTbl, { id: this.id });
       if (index !== -1) {
@@ -65,7 +63,7 @@ class Book {
       this.aid = aid.substring(1);
     }
   }
-  updateBook() {
+  updateBook () {
     if (this.id) {
       const index = _.findIndex(bookTbl, { id: this.id });
       if (index !== -1) {

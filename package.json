@@ -1,25 +1,22 @@
 {
-    "name": "server",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "nodemon --experimental-modules --es-module-specifier-resolution=node server.js"
-    },
-    "author": "",
-    "license": "ISC",
-    "type": "module",
-    "dependencies": {
-        "express": "^4.17.1",
-        "express-graphql": "^0.12.0",
-        "graphql": "^15.5.0",
-        "graphql-tools": "^7.0.5",
-        "lodash": "^4.17.21",
-        "nodemon": "^2.0.7"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-stage-0": "^6.24.1"
-    }
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.8",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.1",
+    "graphql-tools": "^7.0.5",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.12"
+  }
 }
